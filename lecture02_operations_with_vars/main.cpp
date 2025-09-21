@@ -29,6 +29,7 @@ int main()
     bool b1 = 123456; // 1 bytes
 
     std::cout << sizeof(b) << std::endl;
+    std::cout <<"залупа иди нахуй" << std::endl;
 
     return 0;
 }
