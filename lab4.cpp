@@ -84,7 +84,6 @@ int main() {
     
     std::cout << "The row with the closest sum to 0: " << closestRow << std::endl;
     
-    // Заменяем все значения в найденной строке на 0
     for (int j = 0; j < COLS; ++j) {
         matrix[closestRow][j] = 0;
     }
