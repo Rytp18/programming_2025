@@ -66,6 +66,7 @@ int main() {
 
     int closestRow = 0;
     int minDiff = INT_MAX;
+    bool found = false;
 
     for (int i = 0; i < ROWS; ++i) {
         int rowSum = 0;
@@ -74,23 +75,30 @@ int main() {
         }
 
         int diff = std::abs(rowSum);
-        if (diff < minDiff) {
+        std::cout << "Row " << i << ": sum = " << rowSum << ", diff = " << diff << std::endl;
+
+        if (!found || diff < minDiff) {
             minDiff = diff;
             closestRow = i;
+            found = true;
         }
-
-        std::cout << "Sum of row " << i << ": " << rowSum << std::endl;
     }
 
-    std::cout << "The row with the closest sum to 0: " << closestRow << std::endl;
+    if (found) {
+        std::cout << "The row with the closest sum to 0: " << closestRow << std::endl;
 
-    if (closestRow >= 0 && closestRow < ROWS) {
-        for (int j = 0; j < COLS; ++j) {
-            matrix[closestRow][j] = 0;
+        if (closestRow >= 0 && closestRow < ROWS) {
+            for (int j = 0; j < COLS; ++j) {
+                matrix[closestRow][j] = 0;
+            }
+        }
+        else {
+            std::cout << "Error: Invalid row index!" << std::endl;
+            return 1;
         }
     }
     else {
-        std::cout << "Error: Invalid row index!" << std::endl;
+        std::cout << "Error: No valid row found!" << std::endl;
         return 1;
     }
 
