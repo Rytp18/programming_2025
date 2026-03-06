@@ -1,35 +1,80 @@
 #include <iostream>
+using namespace std;
 
 int main() 
 {
-    // no fractional numbers
-    signed char c1; // 1 bytes, 256 values, -128...127
-    unsigned char c2; // 1 bytes, 256 values, 0...255
-    short s1; // 2 bytes, 65536 values, -32768...32767
-    unsigned short us2; // 2 bytes, 65536 values, 0...65535
-    int i1; // 4 bytes, 4,147 billions values, -2^31...(2^31)-1
-    unsigned int ui2; // 4 bytes, 4,147 billions values 0...(2^32)-1
-    long long ll1; // 8 bytes
-    unsigned long long ull2; // 8 bytes
+    // Пункт 1
+    short A;
+    int i;
 
-    i1 = 10.5;
-    std::cout << i1 << std::endl;
+    cout << "A: ";
+    cin >> A;
+    cout << "Bit i (0-7): ";
+    cin >> i;
 
-    //symbols
-    char c3 = 'a';
+    if (i < 0 || i > 7) {
+        cout << "Error" << endl;
+        return 0;
+    }
 
-    //fractionals
-    float f = 3.141592f; // 4 bytes, 6-7 numbers
-    double d = 3.14159265853111111; // 8 bytes , 15-16 numbers
+    // Вывод в двоичном виде
+    cout << A << " = ";
+    cout << ((A >> 7) & 1);
+    cout << ((A >> 6) & 1);
+    cout << ((A >> 5) & 1);
+    cout << ((A >> 4) & 1);
+    cout << ((A >> 3) & 1);
+    cout << ((A >> 2) & 1);
+    cout << ((A >> 1) & 1);
+    cout << ((A >> 0) & 1);
+    cout << endl;
 
-    float f1 = 10; 
+    // Проверка бита
+    int bit = (A >> i) & 1;
 
-    // logic
-    bool b = true; // false(0)
-    bool b1 = 123456; // 1 bytes
+    if (bit == 1) {
+        int x, y;
+        cout << "Two numbers: ";
+        cin >> x >> y;
+        cout << "Max: " << (x > y ? x : y) << endl;
+        A = A & ~(1 << i);
+    }
+    else {
+        A = ~A;
+    }
 
-    std::cout << sizeof(b) << std::endl;
-    std::cout <<"залупа иди нахуй" << std::endl;
+    // Результат
+    cout << "Result: " << A << " = ";
+    cout << ((A >> 7) & 1);
+    cout << ((A >> 6) & 1);
+    cout << ((A >> 5) & 1);
+    cout << ((A >> 4) & 1);
+    cout << ((A >> 3) & 1);
+    cout << ((A >> 2) & 1);
+    cout << ((A >> 1) & 1);
+    cout << ((A >> 0) & 1);
+    cout << endl;
+
+    // Пункт 2
+    int N;
+    cout << "Month: ";
+    cin >> N;
+
+    switch (N) {
+    case 1: cout << "January"; break;
+    case 2: cout << "Febrary"; break;
+    case 3: cout << "March"; break;
+    case 4: cout << "April"; break;
+    case 5: cout << "May"; break;
+    case 6: cout << "June"; break;
+    case 7: cout << "July"; break;
+    case 8: cout << "August"; break;
+    case 9: cout << "September"; break;
+    case 10: cout << "October"; break;
+    case 11: cout << "November"; break;
+    case 12: cout << "December"; break;
+    default: cout << "Error";
+    }
 
     return 0;
 }
